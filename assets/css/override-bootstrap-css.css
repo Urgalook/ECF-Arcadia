@@ -183,3 +183,7 @@ h3 {
 .footer {
     align-items: center;
 }
+
+h1.fw-light {
+    margin-bottom: 2.5vh;
+}

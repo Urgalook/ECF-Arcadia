@@ -12,11 +12,11 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">La jungle d'Arcadia</h1>
         <p class="lead text-body-secondary">
-Bienvenue dans la Savane de notre zoo, un écosystème fascinant qui abrite une diversité impressionnante d'animaux emblématiques. Dans ce biome vaste et ouvert, les visiteurs auront l'occasion de découvrir de près la majesté et la beauté de la faune africaine. Les éléphants, girafes, guépards, lions et zèbres règnent en maîtres de cette terre, offrant aux visiteurs une expérience immersive dans leur habitat naturel. Les éléphants se déplacent gracieusement en troupeaux, les girafes se nourrissent des feuilles des acacias avec leur langue bleue distinctive, tandis que les guépards impressionnent par leur agilité et leur vitesse. Les lions, rois de la savane, commandent le respect avec leur présence puissante et leurs rugissements retentissants. Les zèbres, avec leurs rayures distinctives, ajoutent une touche de caractère unique à cet environnement. Promenez-vous le long des sentiers sinueux pour une immersion totale dans cet écosystème dynamique, avec des points d'observation stratégiquement placés offrant des vues spectaculaires et des opportunités de photographie inoubliables.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
+        <?php $sqlQuery = 'SELECT * FROM habitats WHERE id = 1';
+$habitatsStatement = $pdo->query($sqlQuery);
+$habitatsStatement->execute();
+$habitats = $habitatsStatement->fetchAll(PDO::FETCH_ASSOC);?>
+        <?php foreach ($habitats as $habitats) { ?> <?=$habitats['description']?><?php } ?></p>
       </div>
     </div>
   </section>
