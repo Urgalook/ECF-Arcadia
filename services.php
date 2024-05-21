@@ -2,6 +2,7 @@
 require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . '/back/config.php';
 require_once __DIR__ . '/back/pdo.php';
+$pdo = getDatabaseConnection();
 ?>
 
 <div class="main-services px-4 py-5">

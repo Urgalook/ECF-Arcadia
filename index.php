@@ -1,7 +1,8 @@
 <?php
 
 require_once __DIR__ . '/templates/header.php';
-
+include("/back/pdo.php");
+$pdo = getDatabaseConnection();
 ?>
 
     <div class="main row flex-lg-row-reverse align-items-center g-5 py-5">

@@ -2,6 +2,7 @@
     require_once __DIR__ . '/../back/config.php';
     require_once __DIR__ . '/../back/pdo.php';
     require_once __DIR__ . '/../templates/header.php';
+    $pdo = getDatabaseConnection();
 ?>
 
 <main>
