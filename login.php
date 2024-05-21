@@ -13,7 +13,7 @@ if (isset($_POST['loginUser'])) {
     $user = verifyUserLoginPassword($pdo, $_POST['email'], $_POST['password']);
 
     if ($user) {
-        session_regenerate_id(true);
+        // session_regenerate_id(true);
         $_SESSION['user'] = $user;
 
         if ($user['role'] === 'admin') {
