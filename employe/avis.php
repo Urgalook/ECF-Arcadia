@@ -3,7 +3,7 @@ require_once __DIR__ . "/../back/config.php";
 require_once __DIR__ . "/../back/session.php";
 employeOnly();
 
-// require_once __DIR__ . "/../back/pdo.php";
+require_once __DIR__ . "/../back/pdo.php";
 require_once __DIR__ . "/templates/header.php";
 
 $pdo = getDatabaseConnection();
@@ -74,8 +74,8 @@ function deleteAvis(PDO $pdo, int $id):bool
     }
 }
 
-$avis = getAvis($conn, 25, 1);
-$totalAvis = getTotalAvis($conn);
+$avis = getAvis($pdo, 25, 1);
+$totalAvis = getTotalAvis($pdo);
 $totalPages = ceil($totalAvis / 25);
 
 ?>

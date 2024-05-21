@@ -13,7 +13,7 @@ if (isset($_POST['majAnimaux'])) {
     $habitat = $_POST['habitat'];
 
     $sql = "INSERT INTO `animaux`(`prenom`, `espece`, `habitat`) VALUES (:prenom, :espece, :habitat)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':prenom', $prenom);
     $stmt->bindParam(':espece', $espece);
@@ -64,8 +64,8 @@ function deleteAnimaux(PDO $pdo, int $id):bool
     }
 }
 
-$animaux = getAnimaux($conn, 5, 1);
-$totalAnimaux = getTotalAnimaux($conn);
+$animaux = getAnimaux($pdo, 5, 1);
+$totalAnimaux = getTotalAnimaux($pdo);
 $totalPages = ceil($totalAnimaux / 50);
 
 ?>

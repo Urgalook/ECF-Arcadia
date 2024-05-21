@@ -14,7 +14,7 @@ if (isset($_POST['commentaireHabitat'])) {
 
     $sql = "INSERT INTO `habitat_veterinaire`(`haitat`, `commenaire`, `date`) 
     VALUES (:habitat, :commentaire, :date)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':habitat', $habitat);
     $stmt->bindParam(':commenaire', $commenaire);
@@ -52,8 +52,8 @@ function getTotalHabitat(PDO $pdo): int | bool
 }
 
 
-$habitatV = getHabitat($conn, 25, 1);
-$totalHabitat = getTotalHabitat($conn);
+$habitatV = getHabitat($pdo, 25, 1);
+$totalHabitat = getTotalHabitat($pdo);
 $totalPages = ceil($totalHabitat / 25);
 
 ?>

@@ -12,7 +12,7 @@ if (isset($_POST['majServices'])) {
     $description = $_POST['description'];
 
     $sql = "INSERT INTO `services`(`nom`, `description`) VALUES (:nom, :description)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':description', $description);
@@ -48,8 +48,8 @@ function getTotalServices(PDO $pdo): int | bool
     return $result['total'];
 }
 
-$services = getServices($conn, 5, 1);
-$totalServices = getTotalServices($conn);
+$services = getServices($pdo, 5, 1);
+$totalServices = getTotalServices($pdo);
 $totalPages = ceil($totalServices / 5);
 
 ?>

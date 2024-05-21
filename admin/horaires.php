@@ -107,8 +107,8 @@ function getTotalHoraires(PDO $pdo): int | bool
         <tbody>
         <?php
 
-$horaires = getHoraires($conn, 10, 1);
-$totalHoraires = getTotalHoraires($conn);
+$horaires = getHoraires($pdo, 10, 1);
+$totalHoraires = getTotalHoraires($pdo);
 $totalPages = ceil($totalHoraires / 10);
 
 ?>

@@ -17,7 +17,7 @@ if (isset($_POST['compteRendu'])) {
 
     $sql = "INSERT INTO `veterinaire`(`id_animal`, `etat`, `nourriture`, `grammage`, `date`, `remarque`) 
     VALUES (:id_animal, :etat, :nourriture, :grammage, :date, :remarque)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':id_animal', $id_animal);
     $stmt->bindParam(':etat', $etat);
@@ -58,8 +58,8 @@ function getTotalCompteRendu(PDO $pdo): int | bool
 }
 
 
-$compteRendus = getCompteRendu($conn, 25, 1);
-$totalCompteRendu = getTotalCompteRendu($conn);
+$compteRendus = getCompteRendu($pdo, 25, 1);
+$totalCompteRendu = getTotalCompteRendu($pdo);
 $totalPages = ceil($totalCompteRendu / 25);
 
 ?>

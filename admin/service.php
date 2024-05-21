@@ -13,7 +13,7 @@ if (isset($_POST['saveService'])) {
     $id = $_GET['id'];
 
     $sql = "UPDATE `services` SET `nom` = :nom, " . "`description` = :description" . " WHERE id = :id";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':description', $description);

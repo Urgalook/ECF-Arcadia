@@ -12,7 +12,7 @@ if (isset($_POST['repas'])) {
     $date = $_POST['date'];
 
     $sql = "INSERT INTO `nourriture`(`id_animal`, `nourriture`, `quantite`, `date`) VALUES (:id_animal, :nourriture, :quantite, :date)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':id_animal', $id_animal);
     $stmt->bindParam(':nourriture', $nourriture);
@@ -50,8 +50,8 @@ function getTotalNourriture(PDO $pdo): int | bool
     return $result['total'];
 }
 
-$nourriture = getNourriture($conn, 25, 1);
-$totalNourriture = getTotalNourriture($conn);
+$nourriture = getNourriture($pdo, 25, 1);
+$totalNourriture = getTotalNourriture($pdo);
 $totalPages = ceil($totalNourriture / 25);
 
 ?>

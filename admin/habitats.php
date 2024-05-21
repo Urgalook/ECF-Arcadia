@@ -2,6 +2,7 @@
 require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . '/../back/config.php';
 require_once __DIR__ . '/../back/session.php';
+require_once __DIR__ . '/../back/pdo.php';
 
 adminOnly();
 
@@ -12,7 +13,7 @@ if (isset($_POST['majHabitats'])) {
     $description = $_POST['description'];
 
     $sql = "INSERT INTO `habitats`(`nom`, `description`) VALUES (:nom, :description)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':description', $description);
@@ -62,8 +63,8 @@ function deleteHabitat(PDO $pdo, int $id):bool
     }
 }
 
-$habitats = getHabitats($conn, 5, 1);
-$totalHabitats = getTotalHabitats($conn);
+$habitats = getHabitats($pdo, 5, 1);
+$totalHabitats = getTotalHabitats($pdo);
 $totalPages = ceil($totalHabitats / 5);
 
 ?>

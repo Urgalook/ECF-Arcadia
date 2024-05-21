@@ -14,7 +14,7 @@ if (isset($_POST['saveHoraire'])) {
     $id = $_GET['id'];
 
     $sql = "UPDATE `horaires`SET `jour` = :jour, " . "`ouverture` = :ouverture, " . "`fermeture` = :fermeture" . " WHERE id = :id";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':jour', $jour);
     $stmt->bindParam(':ouverture', $ouverture);

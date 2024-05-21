@@ -2,6 +2,7 @@
 require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . '/../back/config.php';
 require_once __DIR__ . '/../back/session.php';
+require_once __DIR__ . '/../back/pdo.php';
 
 adminOnly();
 
@@ -12,7 +13,7 @@ if (isset($_POST['majServices'])) {
     $description = $_POST['description'];
 
     $sql = "INSERT INTO `services`(`nom`, `description`) VALUES (:nom, :description)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':description', $description);
@@ -62,8 +63,8 @@ function deleteService(PDO $pdo, int $id):bool
     }
 }
 
-$services = getServices($conn, 5, 1);
-$totalServices = getTotalServices($conn);
+$services = getServices($pdo, 5, 1);
+$totalServices = getTotalServices($pdo);
 $totalPages = ceil($totalServices / 5);
 
 ?>

@@ -1,7 +1,8 @@
 <?php
 
 require_once __DIR__ . '/templates/header.php';
-include("/back/pdo.php");
+require_once __DIR__ . '/back/config.php';
+require_once __DIR__ . '/back/pdo.php';
 $pdo = getDatabaseConnection();
 ?>
 
@@ -41,8 +42,7 @@ Arcadia vous invite à découvrir la beauté et la diversité du règne animal, 
 
 <?php
 
-require_once __DIR__ . '/back/config.php';
-require_once __DIR__ . '/back/pdo.php';
+
 
 
     $sqlQuery = 'SELECT * FROM avis ORDER BY id DESC';
