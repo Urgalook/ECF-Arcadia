@@ -5,17 +5,7 @@ require_once __DIR__ . '/../back/pdo.php';
 require_once __DIR__ . '/../back/session.php';
 adminOnly();
 
-$servername = "127.0.0.1";
-$bdd = "arcadia";
-$username = "root";
-$password = "M4x1meSTUDI2024*";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$bdd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$pdo = getDatabaseConnection();
 
 function getHorairesById(PDO $pdo, int $id): array | bool
 {
@@ -117,8 +107,8 @@ function getTotalHoraires(PDO $pdo): int | bool
         <tbody>
         <?php
 
-$horaires = getHoraires($conn, 10, 1);
-$totalHoraires = getTotalHoraires($conn);
+$horaires = getHoraires($pdo, 10, 1);
+$totalHoraires = getTotalHoraires($pdo);
 $totalPages = ceil($totalHoraires / 10);
 
 ?>

@@ -2,27 +2,18 @@
 require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . '/../back/config.php';
 require_once __DIR__ . '/../back/session.php';
+require_once __DIR__ . '/../back/pdo.php';
 
 adminOnly();
 
-$servername = "127.0.0.1";
-$bdd = "arcadia";
-$username = "root";
-$password = "M4x1meSTUDI2024*";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$bdd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$pdo = getDatabaseConnection();
 
 if (isset($_POST['majHabitats'])) {
     $nom = $_POST['nom'];
     $description = $_POST['description'];
 
     $sql = "INSERT INTO `habitats`(`nom`, `description`) VALUES (:nom, :description)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':description', $description);
@@ -72,8 +63,8 @@ function deleteHabitat(PDO $pdo, int $id):bool
     }
 }
 
-$habitats = getHabitats($conn, 5, 1);
-$totalHabitats = getTotalHabitats($conn);
+$habitats = getHabitats($pdo, 5, 1);
+$totalHabitats = getTotalHabitats($pdo);
 $totalPages = ceil($totalHabitats / 5);
 
 ?>

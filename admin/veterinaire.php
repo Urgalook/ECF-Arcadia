@@ -1,22 +1,13 @@
 <?php
 require_once __DIR__ . '/../back/config.php';
 require_once __DIR__ . '/../back/session.php';
+require_once __DIR__ . '/../back/pdo.php';
 
 adminOnly();
 
 require_once __DIR__ . '/templates/header.php';
 
-$servername = "127.0.0.1";
-$bdd = "arcadia";
-$username = "root";
-$password = "M4x1meSTUDI2024*";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$bdd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$pdo = getDatabaseConnection();
 
 if (isset($_POST['compteRendu'])) {
     $id_animal = $_POST['id_animal'];
@@ -28,7 +19,7 @@ if (isset($_POST['compteRendu'])) {
 
     $sql = "INSERT INTO `veterinaire`(`id_animal`, `etat`, `nourriture`, `grammage`, `date`, `remarque`)
     VALUES (:id_animal, :etat, :nourriture, :grammage, :date, :remarque)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':id_animal', $id_animal);
     $stmt->bindParam(':etat', $etat);
@@ -68,8 +59,8 @@ function getTotalCompteRendu(PDO $pdo): int | bool
     return $result['total'];
 }
 
-$compteRendus = getCompteRendu($conn, 25, 1);
-$totalCompteRendu = getTotalCompteRendu($conn);
+$compteRendus = getCompteRendu($pdo, 25, 1);
+$totalCompteRendu = getTotalCompteRendu($pdo);
 $totalPages = ceil($totalCompteRendu / 25);
 
 ?>

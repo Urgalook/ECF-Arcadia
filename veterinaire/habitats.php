@@ -1,21 +1,11 @@
 <?php
 require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . '/../back/config.php';
-// require_once __DIR__ . '/../back/pdo.php';
+require_once __DIR__ . '/../back/pdo.php';
 require_once __DIR__ . '/../back/session.php';
 veterinaireOnly();
 
-$servername = "127.0.0.1";
-$bdd = "arcadia";
-$username = "root";
-$password = "M4x1meSTUDI2024*";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$bdd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$pdo = getDatabaseConnection();
 
 if (isset($_POST['commentaireHabitat'])) {
     $habitat = $_POST['habitat'];
@@ -24,7 +14,7 @@ if (isset($_POST['commentaireHabitat'])) {
 
     $sql = "INSERT INTO `habitat_veterinaire`(`haitat`, `commenaire`, `date`) 
     VALUES (:habitat, :commentaire, :date)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':habitat', $habitat);
     $stmt->bindParam(':commenaire', $commenaire);
@@ -62,8 +52,8 @@ function getTotalHabitat(PDO $pdo): int | bool
 }
 
 
-$habitatV = getHabitat($conn, 25, 1);
-$totalHabitat = getTotalHabitat($conn);
+$habitatV = getHabitat($pdo, 25, 1);
+$totalHabitat = getTotalHabitat($pdo);
 $totalPages = ceil($totalHabitat / 25);
 
 ?>

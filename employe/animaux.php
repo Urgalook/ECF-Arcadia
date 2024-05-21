@@ -3,17 +3,7 @@ require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . '/../back/config.php';
 require_once __DIR__ . '/../back/pdo.php';
 
-$servername = "127.0.0.1";
-$bdd = "arcadia";
-$username = "root";
-$password = "M4x1meSTUDI2024*";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$bdd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$pdo = getDatabaseConnection();
 
 if (isset($_POST['repas'])) {
     $id_animal = $_POST['id_animal'];
@@ -22,7 +12,7 @@ if (isset($_POST['repas'])) {
     $date = $_POST['date'];
 
     $sql = "INSERT INTO `nourriture`(`id_animal`, `nourriture`, `quantite`, `date`) VALUES (:id_animal, :nourriture, :quantite, :date)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':id_animal', $id_animal);
     $stmt->bindParam(':nourriture', $nourriture);
@@ -60,8 +50,8 @@ function getTotalNourriture(PDO $pdo): int | bool
     return $result['total'];
 }
 
-$nourriture = getNourriture($conn, 25, 1);
-$totalNourriture = getTotalNourriture($conn);
+$nourriture = getNourriture($pdo, 25, 1);
+$totalNourriture = getTotalNourriture($pdo);
 $totalPages = ceil($totalNourriture / 25);
 
 ?>

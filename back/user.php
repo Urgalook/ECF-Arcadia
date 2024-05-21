@@ -1,5 +1,6 @@
 <?php
-
+require_once __DIR__ . '/pdo.php';
+$pdo = getDatabaseConnection();
 $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
 
 $statement->bindValue(':email', 'admin@arcadia.com');

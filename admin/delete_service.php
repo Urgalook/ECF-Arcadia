@@ -5,7 +5,7 @@ adminOnly();
 
 require_once __DIR__ . "/../back/pdo.php";
 require_once __DIR__ . "/templates/header.php";
-
+$pdo = getDatabaseConnection();
 function getServicesById(PDO $pdo, int $id): array | bool
 {
     $query = $pdo->prepare("SELECT * FROM services WHERE id = :id");

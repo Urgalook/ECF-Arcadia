@@ -5,17 +5,7 @@ require_once __DIR__ . '/../back/pdo.php';
 require_once __DIR__ . '/../back/session.php';
 adminOnly();
 
-$servername = "127.0.0.1";
-$bdd = "arcadia";
-$username = "root";
-$password = "M4x1meSTUDI2024*";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$bdd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$pdo = getDatabaseConnection();
 
 if (isset($_POST['saveHabitat'])) {
     $nom = $_POST['nom'];
@@ -23,7 +13,7 @@ if (isset($_POST['saveHabitat'])) {
     $id = $_GET['id'];
 
     $sql = "UPDATE `habitats` SET `nom` = :nom, " . "`description` = :description" . " WHERE id = :id";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':description', $description);

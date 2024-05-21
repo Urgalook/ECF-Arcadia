@@ -5,24 +5,14 @@ require_once __DIR__ . '/../back/session.php';
 require_once __DIR__ . '/../back/pdo.php';
 employeOnly();
 
-$servername = "127.0.0.1";
-$bdd = "arcadia";
-$username = "root";
-$password = "M4x1meSTUDI2024*";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$bdd", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$pdo = getDatabaseConnection();
 
 if (isset($_POST['majServices'])) {
     $nom = $_POST['nom'];
     $description = $_POST['description'];
 
     $sql = "INSERT INTO `services`(`nom`, `description`) VALUES (:nom, :description)";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':description', $description);
@@ -58,8 +48,8 @@ function getTotalServices(PDO $pdo): int | bool
     return $result['total'];
 }
 
-$services = getServices($conn, 5, 1);
-$totalServices = getTotalServices($conn);
+$services = getServices($pdo, 5, 1);
+$totalServices = getTotalServices($pdo);
 $totalPages = ceil($totalServices / 5);
 
 ?>

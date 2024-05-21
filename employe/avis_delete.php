@@ -6,7 +6,7 @@ employeOnly();
 require_once __DIR__ . "/../back/pdo.php";
 require_once __DIR__ . "/avis.php";
 require_once __DIR__ . "/templates/header.php";
-
+$pdo = getDatabaseConnection();
 $article = false;
 $errors = [];
 $messages = [];
