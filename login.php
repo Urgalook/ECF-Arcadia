@@ -15,8 +15,7 @@ if (isset($_POST['loginUser'])) {
     if ($user) {
         session_regenerate_id(true);
         $_SESSION['user'] = $user;
-        
-        // Vérification du rôle de l'utilisateur et redirection en fonction du rôle
+
         if ($user['role'] === 'admin') {
             header('location: admin/index.php');
         } elseif ($user['role'] === 'employe') {

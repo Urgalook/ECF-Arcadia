@@ -69,7 +69,7 @@ $horaires = [
 ];
 
 if (isset($_GET['id'])) {
-    //requête pour récupérer les données de l'article en cas de modification
+
     $horaires = getHorairesById($pdo, $_GET['id']);
     if ($horaires === false) {
         $errors[] = "L'horaire n\'existe pas";
@@ -86,20 +86,20 @@ if (isset($_POST['Horaires'])) {
         'ouverture' => $_POST['ouverture'],
         'fermeture' => $_POST['fermeture']
     ];
-    // Si il n'y a pas d'erreur on peut faire la sauvegarde
+
     if (!$errors) {
         if (isset($_GET["id"])) {
-            // Avec (int) on s'assure que la valeur stockée sera de type int
+
             $id = (int)$_GET["id"];
         } else {
             $id = null;
         }
-        // On passe toutes les données à la fonction saveArticle
+
         $res = saveHoraire($pdo, $_POST["jour"], $_POST["ouverture"], $_POST["fermeture"], $id);
 
         if ($res) {
             $messages[] = "L'horaire a bien été sauvegardé";
-            //On vide le tableau article pour avoir les champs de formulaire vides
+
             if (!isset($_GET["id"])) {
                 $horaires = [
                     'nom' => '',

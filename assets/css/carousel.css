@@ -1,7 +1,8 @@
 .carousel {
-    height: 50vh;
-    width: 40vw;
+    height: 60vh;
+    width: 80vw;
     position: relative;
+
   }
   .carousel button {
     position: absolute;

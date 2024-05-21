@@ -65,7 +65,7 @@ $service = [
 ];
 
 if (isset($_GET['id'])) {
-    //requête pour récupérer les données de l'article en cas de modification
+
     $service = getServicesById($pdo, $_GET['id']);
     if ($service === false) {
         $errors[] = "L'article n\'existe pas";
@@ -81,20 +81,20 @@ if (isset($_POST['Service'])) {
         'nom' => $_POST['nom'],
         'description' => $_POST['description']
     ];
-    // Si il n'y a pas d'erreur on peut faire la sauvegarde
+
     if (!$errors) {
         if (isset($_GET["id"])) {
-            // Avec (int) on s'assure que la valeur stockée sera de type int
+
             $id = (int)$_GET["id"];
         } else {
             $id = null;
         }
-        // On passe toutes les données à la fonction saveArticle
+
         $res = saveService($pdo, $_POST["nom"], $_POST["description"], $id);
 
         if ($res) {
             $messages[] = "L'article a bien été sauvegardé";
-            //On vide le tableau article pour avoir les champs de formulaire vides
+
             if (!isset($_GET["id"])) {
                 $service = [
                     'nom' => '',
