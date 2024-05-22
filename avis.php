@@ -11,7 +11,7 @@
         $message = $_POST['message'];
 
         $sql = "INSERT INTO `avis`(`pseudo`, `avis`) VALUES (:pseudo, :message)";
-        $stmt = $conn->prepare($sql);
+        $stmt = $pdo->prepare($sql);
 
         $stmt->bindParam(':pseudo', $pseudo);  
         $stmt->bindParam(':message', $message);
