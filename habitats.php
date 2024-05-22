@@ -9,7 +9,7 @@ require_once __DIR__ . '/templates/header.php';
         <div>
           <h3 class="fs-2 text-body-emphasis">La Jungle</h3>
           <a href="habitats/jungle.php">
-            <img src="/assets/images/jungle.jpg" alt="Jungle" class="img-habitat">
+            <img src="/assets/images/Jungle.jpg" alt="Jungle" class="img-habitat">
         </a>
         </div>
       </div>
