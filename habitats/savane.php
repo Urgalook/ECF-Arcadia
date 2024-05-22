@@ -165,6 +165,6 @@ $sqlQuery = 'SELECT * FROM animaux WHERE espece = 9';
 </main>
 
 
-<script src="../savane.js"></script>
+<script src="/../Savane.js"></script>
 
 <?php require_once __DIR__ . '/../templates/footer.php';?>
