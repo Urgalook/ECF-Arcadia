@@ -109,5 +109,5 @@ $sqlQuery = 'SELECT * FROM animaux WHERE espece = 12';
 </main>
 
 
-<script src="../marais.js"></script>
+<script src="/../Marais.js"></script>
 <?php require_once __DIR__ . '/../templates/footer.php';?>
