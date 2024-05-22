@@ -17,7 +17,7 @@ require_once __DIR__ . '/templates/header.php';
         <div>
           <h3 class="fs-2 text-body-emphasis">La Savane</h3>
           <a href="habitats/savane.php">
-            <img src="/assets/images/savane.webp" alt="Savane" class="img-habitat">
+            <img src="/assets/images/Savane.webp" alt="Savane" class="img-habitat">
           </a>
         </div>
       </div>
@@ -25,7 +25,7 @@ require_once __DIR__ . '/templates/header.php';
         <div>
           <h3 class="fs-2 text-body-emphasis">Le Marais</h3>
           <a href="habitats/marais.php">
-            <img src="/assets/images/marais.jpg" alt="Marais" class="img-habitat">
+            <img src="/assets/images/Marais.jpg" alt="Marais" class="img-habitat">
           </a>
         </div>
       </div>
