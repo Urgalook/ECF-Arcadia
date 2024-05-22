@@ -48,7 +48,6 @@ require_once __DIR__ . '/templates/header.php';
           </a>
         </li>
       </ul>
-      <hr>
 
     </div>
     <div>
