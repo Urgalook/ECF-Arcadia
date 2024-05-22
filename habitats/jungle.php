@@ -135,5 +135,5 @@ $sqlQuery = 'SELECT * FROM animaux WHERE espece = 4';
 </main>
 
 
-<script src="../jungle.js"></script>
+<script src="/../Jungle.js"></script>
 <?php require_once __DIR__ . '/../templates/footer.php';?>
