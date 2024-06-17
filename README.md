@@ -9,7 +9,7 @@ Prérequis pour déployer l'application en local sur votre machine :
 Installation :
   1) Créez un dossier "projet_arcadia" dans "C:\xampp\htdocs\"
      
-  2) Clonez ce dépôt GitHub dans votre répertoire "C:\xampp\htdocs\projetarcadia" en rentrant cette commmande dans GIT : "git clone https://github.com/Tomazku/Studi_ECF_Arcadia_Zoo.git main"
+  2) Clonez ce dépôt GitHub dans votre répertoire "C:\xampp\htdocs\projetarcadia" en rentrant cette commmande dans GIT : "git clone https://github.com/Urgalook/ECF-Arcadia.git main"
      
   3) Création d'un site en local :
        - rendez-vous dans C:\Windows\System32\drivers\etc et ouvrez le fichier "hosts" avec VSCode
